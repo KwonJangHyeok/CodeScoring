@@ -28,9 +28,16 @@ public class BoardServiceImp implements BoardService
 		return repo.findAll();
 	}
 	
-	Optional<BoardEntity> findById(String str)
+	public Optional<BoardEntity> findById(String str)
 	{
 		return repo.findById(str); 
+	}
+	
+	public Object findByNumber(String number) 
+	{
+		return repo.findByNumber(number);
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

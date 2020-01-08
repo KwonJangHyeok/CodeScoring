@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -28,16 +29,19 @@ public class BoardWeb
 		System.out.println(ent.size());
 		for(BoardEntity itr : ent)
 			System.out.println(""+itr.toString());
-		model.addAttribute("test",ent);
+		model.addAttribute("Data",ent);
 		return "Board/Boardhome";
 		              
 	}
 	
 	
-	@RequestMapping(value = "/getConetent")
-	void getContent(@RequestParam String idx)
+	@RequestMapping(value = "/detail/{number}")
+	String getContent(@PathVariable String number, Model model)
 	{
-		System.out.println(idx);
+		System.out.println("getContent");
+		System.out.println(svc.findByNumber(number).toString());
+		model.addAttribute("Data",svc.findByNumber(number));
+		return "Board/BoardDetail";
 		//return "Board
 	}
 	

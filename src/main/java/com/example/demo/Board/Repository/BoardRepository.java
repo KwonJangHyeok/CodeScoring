@@ -12,4 +12,6 @@ import com.example.demo.Board.Entity.BoardEntity;
 public interface BoardRepository extends MongoRepository<BoardEntity, String> {
 
 	public List<BoardEntity> findAll();
+
+	public Object findByNumber(String number);
 }
